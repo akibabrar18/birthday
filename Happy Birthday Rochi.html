@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Birthday Rochi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Pinyon+Script&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one long centered scroll of soft blush panels, rose-gold hairlines, falling petals behind everything. */
+:root {
+  --blush: #fdeef0;
+  --petal: #f7cfd8;
+  --rose: #d9728f;
+  --plum: #4a1d3a;
+  --gold: #b98a4e;
+  --font-script: "Pinyon Script", "Snell Roundhand", cursive;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Jost", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  background:
+    radial-gradient(1200px 600px at 50% -10%, #fff7f8 0%, transparent 60%),
+    radial-gradient(800px 500px at 100% 40%, #f9dbe3 0%, transparent 60%),
+    radial-gradient(800px 500px at 0% 75%, #f6d5e6 0%, transparent 60%),
+    var(--blush);
+  color: var(--plum);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+#petals, #confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+#petals { z-index: 0; }
+#confetti { z-index: 5; }
+main { position: relative; z-index: 1; }
+section { padding: 88px 20px; max-width: 980px; margin: 0 auto; }
+
+.eyebrow {
+  font-size: 12px; letter-spacing: .38em; text-transform: uppercase; color: var(--gold); font-weight: 500;
+}
+.gold-line {
+  height: 1px; width: 120px; margin: 22px auto;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* Hero */
+.hero { text-align: center; padding-top: 72px; padding-bottom: 56px; }
+.frame {
+  position: relative; margin: 28px auto 0; max-width: 640px; padding: 56px 28px 52px;
+  border: 1px solid rgba(185,138,78,.55); border-radius: 320px 320px 28px 28px;
+  background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.35));
+  box-shadow: 0 30px 80px -30px rgba(217,114,143,.5), inset 0 0 0 8px rgba(255,255,255,.55), inset 0 0 0 9px rgba(185,138,78,.25);
+}
+.script { font-family: var(--font-script); font-size: clamp(44px, 9vw, 78px); color: var(--rose); line-height: 1.1; }
+.name {
+  font-family: var(--font-display); font-style: italic; font-weight: 500;
+  font-size: clamp(76px, 20vw, 168px); line-height: .95; letter-spacing: -.01em;
+  background: linear-gradient(120deg, #8c2f56 0%, #d9728f 45%, #b98a4e 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  padding: 6px 12px 14px;
+}
+.lede { font-family: var(--font-display); font-size: clamp(19px, 3.4vw, 24px); font-style: italic; max-width: 30ch; margin: 0 auto; text-wrap: balance; }
+.sparkle { display: inline-block; color: var(--gold); animation: twinkle 3s ease-in-out infinite; }
+.sparkle:nth-child(2) { animation-delay: 1s; } .sparkle:nth-child(3) { animation-delay: 2s; }
+@keyframes twinkle { 0%,100% { opacity: .45; transform: scale(.85); } 50% { opacity: 1; transform: scale(1.15); } }
+
+h2 {
+  font-family: var(--font-display); font-weight: 500; font-style: italic;
+  font-size: clamp(34px, 6vw, 52px); line-height: 1.15; text-align: center; text-wrap: balance; margin-top: 10px;
+}
+
+/* Cake */
+.cake-wrap { display: grid; justify-items: center; gap: 18px; margin-top: 30px; }
+.cake { width: min(280px, 70vw); height: auto; overflow: visible; }
+.flame { transform-origin: 120px 62px; animation: flicker 1.3s ease-in-out infinite; transition: opacity .4s, transform .4s; }
+@keyframes flicker { 0%,100% { transform: scale(1) rotate(-2deg); } 50% { transform: scale(1.08,1.15) rotate(3deg); } }
+.glow { animation: glow 2s ease-in-out infinite; transition: opacity .4s; }
+@keyframes glow { 0%,100% { opacity: .5; } 50% { opacity: .9; } }
+.out .flame, .out .glow { opacity: 0; animation: none; transform: scale(.2); }
+.smoke { opacity: 0; }
+.out .smoke { animation: smoke 2.6s ease-out forwards; }
+@keyframes smoke { 0% { opacity: .7; transform: translateY(0); } 100% { opacity: 0; transform: translateY(-34px); } }
+.btn {
+  font: 500 13px/1 var(--font-body); letter-spacing: .24em; text-transform: uppercase;
+  color: #fff; background: linear-gradient(135deg, #c95377, #d9728f 55%, #c99a5b);
+  border: 0; padding: 17px 30px; border-radius: 999px; cursor: pointer;
+  box-shadow: 0 14px 30px -12px rgba(201,83,119,.8); transition: transform .2s, box-shadow .2s;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 18px 34px -12px rgba(201,83,119,.9); }
+.btn:focus-visible, .card:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.wish-msg { font-family: var(--font-script); font-size: clamp(30px, 6vw, 42px); color: var(--rose); min-height: 1.4em; text-align: center; }
+
+/* Wish cards */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px; margin-top: 44px; }
+.card {
+  text-align: left; font: inherit; color: inherit; cursor: pointer;
+  background: rgba(255,255,255,.7); border: 1px solid rgba(185,138,78,.4); border-radius: 22px;
+  padding: 34px 28px 30px; position: relative; overflow: hidden; transition: transform .35s, box-shadow .35s, background .35s;
+}
+.card::before {
+  content: ""; position: absolute; inset: 7px; border-radius: 16px; border: 1px dashed rgba(217,114,143,.35); pointer-events: none;
+}
+@media (hover: hover) { .card:hover { transform: translateY(-6px) rotate(-.6deg); box-shadow: 0 26px 50px -26px rgba(140,47,86,.55); background: #fff; } }
+.card:active { transform: scale(.98); background: #fff; }
+.btn { -webkit-tap-highlight-color: transparent; }
+.card { -webkit-tap-highlight-color: transparent; }
+.card .tag { font-family: var(--font-script); font-size: 38px; color: var(--rose); line-height: 1; display: block; margin-bottom: 8px; }
+.card h3 { font-family: var(--font-display); font-weight: 500; font-size: 26px; line-height: 1.2; margin-bottom: 10px; }
+.card p { font-size: 16px; }
+
+/* Letter */
+.letter {
+  max-width: 700px; margin: 40px auto 0; padding: 54px 40px 46px; text-align: center;
+  background: linear-gradient(180deg, #fffafb, #fff3f6); border-radius: 6px;
+  border: 1px solid rgba(185,138,78,.45);
+  box-shadow: 0 40px 70px -40px rgba(140,47,86,.55), 0 0 0 10px rgba(255,255,255,.5);
+}
+.letter p { font-family: var(--font-display); font-size: clamp(20px, 3.6vw, 24px); font-style: italic; line-height: 1.75; margin-bottom: 20px; text-wrap: pretty; }
+.sign { font-family: var(--font-script); font-size: 44px; color: var(--rose); margin-top: 14px; }
+
+footer { text-align: center; padding: 30px 20px 90px; }
+footer .script { font-size: clamp(36px, 7vw, 54px); }
+footer p.small { font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-top: 12px; }
+
+@media (max-width: 600px) {
+  section { padding: 60px 16px; }
+  .hero { padding-top: 40px; padding-bottom: 36px; }
+  .frame { margin-top: 0; padding: 60px 14px 40px; border-radius: 999px 999px 24px 24px / 190px 190px 24px 24px; }
+  .name { padding: 4px 4px 10px; }
+  .lede { font-size: 19px; }
+  .grid { grid-template-columns: 1fr; gap: 16px; margin-top: 32px; }
+  .card { padding: 28px 22px 24px; }
+  .card .tag { font-size: 34px; }
+  .card h3 { font-size: 23px; }
+  .letter { padding: 38px 20px 30px; box-shadow: 0 30px 60px -36px rgba(140,47,86,.55), 0 0 0 6px rgba(255,255,255,.5); }
+  .letter p { font-size: 19px; line-height: 1.65; }
+  .sign { font-size: 38px; }
+  .btn { width: 100%; max-width: 340px; padding: 18px 20px; font-size: 12px; letter-spacing: .2em; }
+  .eyebrow { font-size: 11px; letter-spacing: .3em; }
+  .cake { width: min(240px, 64vw); }
+  footer { padding: 20px 16px 64px; }
+}
+@media (max-width: 360px) {
+  .name { font-size: 70px; }
+  .script { font-size: 40px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+<canvas id="petals" aria-hidden="true"></canvas>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<main>
+  <section class="hero" aria-labelledby="top">
+    <div class="frame">
+      <p class="script" id="top">Happy Birthday</p>
+      <h1 class="name">Rochi</h1>
+      <div class="gold-line"></div>
+      <p class="lede">Today the whole day belongs to you.</p>
+      <p style="margin-top:22px;font-size:22px" aria-hidden="true"><span class="sparkle">✦</span> <span class="sparkle">✧</span> <span class="sparkle">✦</span></p>
+    </div>
+  </section>
+
+  <section aria-labelledby="wish-title">
+    <p class="eyebrow" style="text-align:center">A little ceremony</p>
+    <h2 id="wish-title">Light the candle and make a wish</h2>
+    <div class="cake-wrap" id="cakeWrap">
+      <svg class="cake" viewBox="0 0 240 270" role="img" aria-label="A pink birthday cake with one lit candle">
+        <defs>
+          <linearGradient id="gTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" /><stop offset="1" stop-color="#fbd9e2" /></linearGradient>
+          <linearGradient id="gMid" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3a9bd" /><stop offset="1" stop-color="#e0809c" /></linearGradient>
+          <linearGradient id="gBot" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e58aa5" /><stop offset="1" stop-color="#c95377" /></linearGradient>
+          <linearGradient id="gFlame" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#f4b13e" /><stop offset="1" stop-color="#fff6c8" /></linearGradient>
+          <radialGradient id="gGlow"><stop offset="0" stop-color="#ffe9a8" stop-opacity=".9" /><stop offset="1" stop-color="#ffe9a8" stop-opacity="0" /></radialGradient>
+        </defs>
+        <ellipse cx="120" cy="256" rx="104" ry="9" fill="#8c2f56" opacity=".14" />
+        <rect x="16" y="186" width="208" height="64" rx="14" fill="url(#gBot)" />
+        <rect x="46" y="130" width="148" height="62" rx="13" fill="url(#gMid)" />
+        <rect x="76" y="84" width="88" height="52" rx="12" fill="url(#gTop)" stroke="#f1c3cf" />
+        <path d="M46 140 q10 16 20 0 q10 18 20 0 q10 16 20 0 q10 18 20 0 q10 16 20 0 q10 18 20 0 q8 12 8 0 v-8 h-148z" fill="#fff" opacity=".95" />
+        <path d="M16 196 q13 18 26 0 q13 20 26 0 q13 18 26 0 q13 20 26 0 q13 18 26 0 q13 20 26 0 q13 18 26 0 q13 20 26 0 v-10 h-208z" fill="#fff" opacity=".95" />
+        <g fill="#b98a4e"><circle cx="70" cy="226" r="4" /><circle cx="100" cy="232" r="4" /><circle cx="130" cy="226" r="4" /><circle cx="160" cy="232" r="4" /><circle cx="190" cy="226" r="4" /><circle cx="44" cy="232" r="4" /></g>
+        <g fill="#fff"><circle cx="92" cy="166" r="3.5" /><circle cx="120" cy="170" r="3.5" /><circle cx="148" cy="166" r="3.5" /></g>
+        <rect x="112" y="62" width="16" height="30" rx="4" fill="#fff" stroke="#f1c3cf" />
+        <path d="M112 70 l16 6 M112 78 l16 6" stroke="#d9728f" stroke-width="3" />
+        <circle class="glow" cx="120" cy="44" r="40" fill="url(#gGlow)" />
+        <path class="flame" d="M120 24 C132 38 134 52 120 60 C106 52 108 38 120 24 Z" fill="url(#gFlame)" />
+        <g class="smoke" stroke="#b9a3ac" stroke-width="2" fill="none" stroke-linecap="round">
+          <path d="M120 56 q-8 -8 0 -16 q8 -8 0 -16" />
+        </g>
+      </svg>
+      <button class="btn" id="blow" type="button">Blow out the candle</button>
+      <p class="wish-msg" id="wishMsg" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section aria-labelledby="cards-title">
+    <p class="eyebrow" style="text-align:center">Six wishes for you</p>
+    <h2 id="cards-title">Tap each one</h2>
+    <div class="grid">
+      <button class="card" type="button" data-front="Joy" data-text="May small things delight you every day, from the first cup of the morning to the last light in the evening.">
+        <span class="tag">Joy</span><h3>Laughter that lingers</h3><p>Tap to open this wish.</p>
+      </button>
+      <button class="card" type="button" data-front="Love" data-text="May you be surrounded by people who love you loudly and show up for you without being asked.">
+        <span class="tag">Love</span><h3>Hearts that hold you</h3><p>Tap to open this wish.</p>
+      </button>
+      <button class="card" type="button" data-front="Health" data-text="May your days be full of rest, good food and energy to spare, and may you always find time to look after yourself.">
+        <span class="tag">Health</span><h3>Gentle, glowing days</h3><p>Tap to open this wish.</p>
+      </button>
+      <button class="card" type="button" data-front="Dreams" data-text="May the plans you whisper to yourself become the ones you say out loud, and then the ones you finish.">
+        <span class="tag">Dreams</span><h3>Doors that open</h3><p>Tap to open this wish.</p>
+      </button>
+      <button class="card" type="button" data-front="Peace" data-text="May your mind be calm, your heart light, and your year free of anything that dims your sparkle.">
+        <span class="tag">Peace</span><h3>A quiet kind of magic</h3><p>Tap to open this wish.</p>
+      </button>
+      <button class="card" type="button" data-front="Everything" data-text="May this year hold every good thing you hoped for, and a few lovely surprises you never saw coming.">
+        <span class="tag">Everything</span><h3>All of it, and more</h3><p>Tap to open this wish.</p>
+      </button>
+    </div>
+  </section>
+
+  <section aria-labelledby="letter-title">
+    <p class="eyebrow" style="text-align:center">Just for you</p>
+    <h2 id="letter-title">A note, with love</h2>
+    <div class="letter">
+      <p>Dear Rochi,</p>
+      <p>Some people make a room feel warmer just by walking into it. Thank you for being one of them.</p>
+      <p>I hope today feels like a celebration made entirely of your favourite things. You deserve flowers, sweets, long laughs and every kind word anyone has for you.</p>
+      <p>Happy birthday. Here is to you, and to the year ahead.</p>
+      <div class="sign">With love, Akib</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="gold-line"></div>
+  <p class="script">Happy Birthday, Rochi</p>
+  <p class="small">Made for you</p>
+  <p style="margin-top:26px"><button class="btn" id="again" type="button">Shower me with petals</button></p>
+</footer>
+
+<script>
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var petalCv = document.getElementById("petals"), pc = petalCv.getContext("2d");
+  var confCv = document.getElementById("confetti"), cc = confCv.getContext("2d");
+  var W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function resize() {
+    W = window.innerWidth; H = window.innerHeight;
+    [petalCv, confCv].forEach(function (c) { c.width = W * dpr; c.height = H * dpr; });
+    pc.setTransform(dpr, 0, 0, dpr, 0, 0); cc.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize(); window.addEventListener("resize", resize);
+
+  var colors = ["#f7b7c8", "#f3a0b6", "#fbd6df", "#e98aa5", "#f8c8d8", "#e6c58f"];
+  function makePetal(top) {
+    return { x: Math.random() * W, y: top ? -20 : Math.random() * H, s: 7 + Math.random() * 11,
+      vy: .35 + Math.random() * .8, vx: -.25 + Math.random() * .5, r: Math.random() * 6.28,
+      vr: -.02 + Math.random() * .04, sw: Math.random() * 6.28, c: colors[(Math.random() * colors.length) | 0] };
+  }
+  var petals = []; var count = W < 600 ? 22 : 38;
+  for (var i = 0; i < count; i++) petals.push(makePetal(false));
+  function drawPetal(ctx, p) {
+    ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.fillStyle = p.c; ctx.globalAlpha = .75;
+    ctx.beginPath(); ctx.moveTo(0, -p.s);
+    ctx.bezierCurveTo(p.s * .9, -p.s * .5, p.s * .7, p.s * .6, 0, p.s);
+    ctx.bezierCurveTo(-p.s * .7, p.s * .6, -p.s * .9, -p.s * .5, 0, -p.s);
+    ctx.fill(); ctx.restore();
+  }
+  var burst = [];
+  function addBurst(n, fromTop) {
+    for (var i = 0; i < n; i++) {
+      var p = makePetal(true);
+      if (fromTop) { p.y = -10 - Math.random() * 200; p.vy = 2 + Math.random() * 3; }
+      else { p.x = W / 2; p.y = H * .55; var a = Math.random() * 6.28, sp = 4 + Math.random() * 9; p.vx = Math.cos(a) * sp; p.vy = Math.sin(a) * sp - 4; }
+      p.life = 1; p.burst = true; p.s = 5 + Math.random() * 8; burst.push(p);
+    }
+  }
+  function frame() {
+    pc.clearRect(0, 0, W, H); cc.clearRect(0, 0, W, H);
+    petals.forEach(function (p, i) {
+      p.sw += .015; p.x += p.vx + Math.sin(p.sw) * .5; p.y += p.vy; p.r += p.vr;
+      if (p.y > H + 20) petals[i] = makePetal(true);
+      drawPetal(pc, p);
+    });
+    burst = burst.filter(function (p) { return p.life > 0 && p.y < H + 30; });
+    burst.forEach(function (p) {
+      p.vy += .12; p.vx *= .985; p.x += p.vx; p.y += p.vy; p.r += p.vr * 3; p.life -= .004;
+      cc.globalAlpha = Math.max(p.life, 0); drawPetal(cc, p); cc.globalAlpha = 1;
+    });
+    requestAnimationFrame(frame);
+  }
+  if (reduce) { petals.forEach(function (p) { drawPetal(pc, p); }); }
+  else { requestAnimationFrame(frame); }
+
+  var wrap = document.getElementById("cakeWrap"), blow = document.getElementById("blow"), msg = document.getElementById("wishMsg");
+  var lit = true;
+  blow.addEventListener("click", function () {
+    if (lit) {
+      lit = false; wrap.classList.add("out"); blow.textContent = "Light it again";
+      msg.textContent = "May every wish come true"; if (!reduce) addBurst(70, false);
+    } else {
+      lit = true; wrap.classList.remove("out"); blow.textContent = "Blow out the candle"; msg.textContent = "";
+    }
+  });
+  document.getElementById("again").addEventListener("click", function () { if (!reduce) addBurst(90, true); });
+
+  document.querySelectorAll(".card").forEach(function (c) {
+    var open = false, h = c.querySelector("h3"), p = c.querySelector("p"), t = c.querySelector(".tag");
+    var h0 = h.textContent, p0 = p.textContent;
+    c.addEventListener("click", function () {
+      open = !open;
+      p.textContent = open ? c.dataset.text : p0;
+      c.setAttribute("aria-pressed", open ? "true" : "false");
+      if (open && !reduce) addBurst(16, true);
+    });
+  });
+})();
+</script>
+</body>
+</html>
